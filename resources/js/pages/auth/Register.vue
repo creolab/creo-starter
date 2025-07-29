@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import InputError from '@/components/InputError.vue';
 import TextLink from '@/components/TextLink.vue';
+import { SocialLoginButtons } from '@/components/auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -26,6 +27,7 @@ const submit = () => {
     <AuthBase title="Create an account" description="Enter your details below to create your account">
         <Head title="Register" />
 
+        <!-- Email Registration Form -->
         <form @submit.prevent="submit" class="flex flex-col gap-6">
             <div class="grid gap-6">
                 <div class="grid gap-2">
@@ -79,5 +81,10 @@ const submit = () => {
                 <TextLink :href="route('login')" class="underline underline-offset-4" :tabindex="6">Log in</TextLink>
             </div>
         </form>
+
+        <!-- Social Login Buttons -->
+        <div class="mt-6">
+            <SocialLoginButtons :show-divider="true" :show-email-option="false" />
+        </div>
     </AuthBase>
 </template>
