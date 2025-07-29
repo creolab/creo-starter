@@ -32,20 +32,19 @@ const sizeClasses = computed(() => {
     }
 });
 
+const fullName = computed(() => `${props.user.first_name} ${props.user.last_name}`);
+
 const avatarUrl = computed(() => {
     if (props.user.has_avatar && props.user.avatar_url) {
         return props.user.avatar_url;
     }
 
     // Generate default avatar from initials
-    const initials =
-        props.user.first_name +
-        ' ' +
-        props.user.last_name
-            .split(' ')
-            .map((word) => word.charAt(0).toUpperCase())
-            .slice(0, 2)
-            .join('');
+    const initials = fullName.value
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase())
+        .slice(0, 2)
+        .join('');
 
     const size = props.size === 'small' ? 50 : props.size === 'large' ? 150 : 100;
 
@@ -53,15 +52,11 @@ const avatarUrl = computed(() => {
 });
 
 const initials = computed(() => {
-    return (
-        props.user.first_name +
-        ' ' +
-        props.user.last_name
-            .split(' ')
-            .map((word) => word.charAt(0).toUpperCase())
-            .slice(0, 2)
-            .join('')
-    );
+    return fullName.value
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase())
+        .slice(0, 2)
+        .join('');
 });
 </script>
 
@@ -71,16 +66,16 @@ const initials = computed(() => {
             <img
                 v-if="user.has_avatar && user.avatar_url"
                 :src="avatarUrl"
-                :alt="`${user.first_name} ${user.last_name}'s avatar`"
+                :alt="`${fullName}'s avatar`"
                 class="h-full w-full object-cover"
                 @error="(e) => ((e.target as HTMLImageElement).style.display = 'none')"
             />
-            <img v-else :src="avatarUrl" :alt="`${user.first_name} ${user.last_name}'s avatar`" class="h-full w-full object-cover" />
+            <img v-else :src="avatarUrl" :alt="`${fullName}'s avatar`" class="h-full w-full object-cover" />
         </div>
 
         <div v-if="showName" class="min-w-0 flex-1">
             <p class="truncate text-sm font-medium text-foreground">
-                {{ user.first_name + ' ' + user.last_name }}
+                {{ fullName }}
             </p>
             <p class="truncate text-xs text-muted-foreground">
                 {{ user.email }}

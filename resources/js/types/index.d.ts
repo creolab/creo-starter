@@ -23,6 +23,11 @@ export type AppPageProps<T extends Record<string, unknown> = Record<string, unkn
     auth: Auth;
     ziggy: Config & { location: string };
     sidebarOpen: boolean;
+    flash?: {
+        success?: string;
+        error?: string;
+    };
+    errors?: Record<string, string>;
 };
 
 export interface User {
@@ -30,7 +35,8 @@ export interface User {
     first_name: string;
     last_name: string;
     email: string;
-    avatar?: string;
+    avatar_url?: string;
+    has_avatar?: boolean;
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;

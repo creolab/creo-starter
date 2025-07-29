@@ -76,6 +76,19 @@ const submit = () => {
                     </div>
 
                     <div class="grid gap-2">
+                        <Label for="last_name">Last Name</Label>
+                        <Input
+                            id="last_name"
+                            class="mt-1 block w-full"
+                            v-model="form.last_name"
+                            required
+                            autocomplete="last_name"
+                            placeholder="Last name"
+                        />
+                        <InputError class="mt-2" :message="form.errors.last_name" />
+                    </div>
+
+                    <div class="grid gap-2">
                         <Label for="email">Email address</Label>
                         <Input
                             id="email"

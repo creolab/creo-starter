@@ -74,6 +74,11 @@ const removeAvatar = async () => {
         only: ['auth', 'flash', 'errors'],
         onFinish: () => {
             isUploading.value = false;
+            // Show success toast
+            const flash = page.props.flash;
+            if (flash && flash.success) {
+                toast.success(flash.success);
+            }
         },
     });
 };

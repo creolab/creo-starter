@@ -42,6 +42,16 @@ class User extends Authenticatable implements HasMedia
     ];
 
     /**
+     * The attributes that should be appended to the model's array form.
+     *
+     * @var array<string>
+     */
+    protected $appends = [
+        'avatar_url',
+        'has_avatar',
+    ];
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -85,18 +95,13 @@ class User extends Authenticatable implements HasMedia
     /**
      * Get the user's avatar URL.
      */
-    public function getAvatarUrl(?string $conversion = null): string
+    public function getAvatarUrlAttribute(?string $conversion = null): string
     {
         // Check for uploaded avatar first
         $media = $this->getFirstMedia('avatar');
 
         if ($media) {
             return $conversion ? $media->getUrl($conversion) : $media->getUrl();
-        }
-
-        // Check for social provider avatar
-        if ($this->avatar) {
-            return $this->avatar;
         }
 
         // Fallback to default avatar
@@ -119,8 +124,8 @@ class User extends Authenticatable implements HasMedia
     /**
      * Check if user has an avatar.
      */
-    public function hasAvatar(): bool
+    public function getHasAvatarAttribute(): bool
     {
-        return $this->hasMedia('avatar') || !empty($this->avatar);
+        return $this->hasMedia('avatar');
     }
 }

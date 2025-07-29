@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class AvatarController extends Controller
@@ -14,8 +15,6 @@ class AvatarController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        return back()->with('success', 'Avatar uploaded successfully!');
-
         $validator = Validator::make($request->all(), [
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
@@ -38,6 +37,7 @@ class AvatarController extends Controller
 
             return back()->with('success', 'Avatar uploaded successfully!');
         } catch (\Exception $e) {
+            Log::error('Avatar upload failed: ' . $e->getMessage());
             return back()->withErrors([
                 'avatar' => 'Failed to upload avatar. Please try again.'
             ]);
@@ -55,6 +55,7 @@ class AvatarController extends Controller
 
             return back()->with('success', 'Avatar removed successfully!');
         } catch (\Exception $e) {
+            Log::error('Avatar removal failed: ' . $e->getMessage());
             return back()->withErrors([
                 'avatar' => 'Failed to remove avatar. Please try again.'
             ]);
