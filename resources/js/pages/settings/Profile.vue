@@ -8,6 +8,7 @@ import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
 import { type BreadcrumbItem, type User } from '@/types';
@@ -30,7 +31,8 @@ const page = usePage();
 const user = page.props.auth.user as User;
 
 const form = useForm({
-    name: user.name,
+    first_name: user.first_name,
+    last_name: user.last_name,
     email: user.email,
 });
 
@@ -61,9 +63,16 @@ const submit = () => {
 
                 <form @submit.prevent="submit" class="space-y-6">
                     <div class="grid gap-2">
-                        <Label for="name">Name</Label>
-                        <Input id="name" class="mt-1 block w-full" v-model="form.name" required autocomplete="name" placeholder="Full name" />
-                        <InputError class="mt-2" :message="form.errors.name" />
+                        <Label for="first_name">First Name</Label>
+                        <Input
+                            id="first_name"
+                            class="mt-1 block w-full"
+                            v-model="form.first_name"
+                            required
+                            autocomplete="first_name"
+                            placeholder="First name"
+                        />
+                        <InputError class="mt-2" :message="form.errors.first_name" />
                     </div>
 
                     <div class="grid gap-2">

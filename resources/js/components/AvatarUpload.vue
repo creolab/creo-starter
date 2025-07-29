@@ -5,11 +5,13 @@ import type { AppPageProps } from '@/types';
 import { router, usePage } from '@inertiajs/vue3';
 import { AlertCircle, Upload, X } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
+import { toast } from 'vue-sonner';
 
 interface Props {
     user: {
         id: number;
-        name: string;
+        first_name: string;
+        last_name: string;
         email: string;
         avatar_url?: string;
         has_avatar?: boolean;
@@ -44,13 +46,21 @@ const uploadAvatar = async (file: File) => {
     const formData = new FormData();
     formData.append('avatar', file);
 
-    router.post('/avatar', formData, {
+    router.post(route('avatar.store'), formData, {
         preserveScroll: true,
         only: ['auth', 'flash', 'errors'],
         onFinish: () => {
             isUploading.value = false;
             if (fileInput.value) {
                 fileInput.value.value = '';
+            }
+            // Show success or error toast based on response
+            const flash = page.props.flash;
+            const errors = page.props.errors;
+            if (flash && flash.success) {
+                toast.success(flash.success);
+            } else if (errors && errors.avatar) {
+                toast.error(errors.avatar);
             }
         },
     });
@@ -59,7 +69,7 @@ const uploadAvatar = async (file: File) => {
 const removeAvatar = async () => {
     isUploading.value = true;
 
-    router.delete('/avatar', {
+    router.delete(route('avatar.destroy'), {
         preserveScroll: true,
         only: ['auth', 'flash', 'errors'],
         onFinish: () => {
