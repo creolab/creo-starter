@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { FlipWords } from '@/components/ui/flip-words';
 import { ParticlesBg } from '@/components/ui/particles-bg';
+import { RainbowButton } from '@/components/ui/rainbow-button';
 import { useColorMode } from '@vueuse/core';
 import { ArrowRight, Sparkles } from 'lucide-vue-next';
 
@@ -13,6 +15,8 @@ const isDark = computed(() => colorMode.value === 'dark');
 
 <template>
     <section class="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
+        <ParticlesBg class="absolute inset-0" :quantity="125" :ease="150" :color="isDark ? '#FFF' : '#000'" :staticity="10" refresh />
+
         <div class="bg-grid-white/[0.02] absolute inset-0 bg-[size:60px_60px]" />
         <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
             <div class="text-center">
@@ -22,9 +26,11 @@ const isDark = computed(() => colorMode.value === 'dark');
                 </Badge>
 
                 <h1
-                    class="mx-auto max-w-4xl bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl"
+                    class="mx-auto max-w-4xl bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-4xl font-semibold tracking-tight text-transparent sm:text-6xl lg:text-7xl"
                 >
-                    Build beautiful apps
+                    Build
+                    <FlipWords :words="['beautiful', 'fast', 'simple']" :duration="3000" class="inline-block font-bold" />
+                    apps
                     <span class="block text-primary">faster than ever</span>
                 </h1>
 
@@ -32,17 +38,17 @@ const isDark = computed(() => colorMode.value === 'dark');
                     A modern Laravel + Vue.js starter kit with shadcn-vue components, Tailwind v4, and everything you need to ship your next project.
                 </p>
 
-                <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                    <Button size="lg" class="group">
-                        Get Started
-                        <ArrowRight class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
+                <div class="mt-10 flex flex-col items-center justify-center gap-4 p-0 sm:flex-row">
+                    <RainbowButton :speed="10" class="h-auto p-0">
+                        <a href="#" class="flex items-center rounded-xl bg-gray-800 px-8 py-2 text-sm text-white">
+                            Get Started
+                            <ArrowRight class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </a>
+                    </RainbowButton>
                     <Button variant="outline" size="lg"> View Documentation </Button>
                 </div>
             </div>
         </div>
-
-        <ParticlesBg class="absolute inset-0" :quantity="100" :ease="100" :color="isDark ? '#FFF' : '#000'" :staticity="10" refresh />
     </section>
 </template>
 
