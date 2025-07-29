@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 
+import AvatarUpload from '@/components/AvatarUpload.vue';
 import DeleteUser from '@/components/DeleteUser.vue';
 import HeadingSmall from '@/components/HeadingSmall.vue';
 import InputError from '@/components/InputError.vue';
@@ -46,6 +47,16 @@ const submit = () => {
 
         <SettingsLayout>
             <div class="flex flex-col space-y-6">
+                <!-- Avatar Section -->
+                <div>
+                    <HeadingSmall title="Avatar" description="Upload a profile picture" />
+                    <div class="mt-4">
+                        <AvatarUpload :user="user" />
+                    </div>
+                </div>
+
+                <Separator />
+
                 <HeadingSmall title="Profile information" description="Update your name and email address" />
 
                 <form @submit.prevent="submit" class="space-y-6">
