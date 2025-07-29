@@ -15,18 +15,22 @@
 - **Frontend**: Vue.js 3 with TypeScript
 - **Styling**: Tailwind CSS v4 with CSS Variables
 - **UI Components**: shadcn-vue (New York style)
+- **Enhanced Components**: Inspira UI for advanced animations and interactions
+- **Theme System**: TweakCN themes for consistent design patterns
 - **Icons**: Lucide Vue Next
 - **Build Tool**: Vite 7 with SSR support
 - **Testing**: Pest PHP for backend testing
 - **Media Management**: Spatie Laravel MediaLibrary
 
 ### 🎨 **UI & Design**
-- **Modern Landing Page**: Hero section, features, testimonials, and CTA
+- **Modern Landing Page**: Hero section with particle effects, features, testimonials, and CTA
 - **Dashboard Components**: Stats overview, recent activity, quick actions, system status
 - **Avatar Upload**: Instant file upload with image conversions and fallback generation
 - **Responsive Design**: Mobile-first approach with adaptive layouts
 - **Dark/Light Mode**: System preference detection with manual toggle
 - **Component Library**: 40+ shadcn-vue components pre-configured
+- **Advanced Animations**: Inspira UI components for enhanced user interactions
+- **Consistent Theming**: TweakCN theme patterns across all components
 - **Animation**: tw-animate-css for smooth interactions
 
 ### 🔐 **Authentication & Security**
@@ -158,7 +162,7 @@ creo-starter/
 
 ### Homepage Components
 - **HomepageHeader**: Navigation with theme switcher and dynamic auth links
-- **HeroSection**: Landing page hero with gradient backgrounds and CTAs
+- **HeroSection**: Landing page hero with gradient backgrounds, particle effects, and CTAs
 - **FeaturesSection**: Product feature showcase with hover animations
 - **TestimonialsSection**: Customer testimonials with avatar integration
 - **CTASection**: Final call-to-action with compelling messaging
@@ -281,6 +285,20 @@ Pre-configured with:
 - **TypeScript**: Full type safety
 - **Customizable**: Easy theme modifications
 - **Accessible**: ARIA compliant components
+
+### Inspira UI Integration
+Enhanced components with advanced animations:
+- **Particle Backgrounds**: Interactive particle systems for hero sections
+- **Advanced Animations**: Smooth micro-interactions
+- **Performance Optimized**: Efficient canvas-based animations
+- **Theme Aware**: Automatically adapts to light/dark modes
+
+### TweakCN Themes
+Consistent design patterns from TweakCN:
+- **Color Palettes**: Carefully curated color schemes
+- **Component Variations**: Alternative styling options
+- **Design Systems**: Cohesive visual patterns
+- **Responsive Layouts**: Mobile-first design principles
 
 ### Theme Switching
 ```typescript
@@ -412,6 +430,8 @@ Built with these amazing technologies:
 - [Inertia.js](https://inertiajs.com) - The modern monolith
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
 - [shadcn-vue](https://shadcn-vue.com) - Beautiful Vue components
+- [Inspira UI](https://inspiraui.com) - Advanced component animations and interactions
+- [TweakCN](https://tweakcn.com) - Consistent design themes and patterns
 - [Lucide](https://lucide.dev) - Beautiful & consistent icons
 - [Vite](https://vitejs.dev) - Next generation frontend tooling
 - [Spatie MediaLibrary](https://spatie.be/docs/laravel-medialibrary) - File management
