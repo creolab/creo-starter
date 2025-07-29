@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { ParticlesBg } from '@/components/ui/particles-bg';
+import { useColorMode } from '@vueuse/core';
 import { ArrowRight, Sparkles } from 'lucide-vue-next';
+
+import { computed } from 'vue';
+
+const isDark = computed(() => useColorMode().value == 'dark');
 </script>
 
 <template>
@@ -34,6 +40,8 @@ import { ArrowRight, Sparkles } from 'lucide-vue-next';
                 </div>
             </div>
         </div>
+
+        <ParticlesBg class="absolute inset-0" :quantity="100" :ease="100" :color="isDark ? '#FFF' : '#000'" :staticity="10" refresh />
     </section>
 </template>
 

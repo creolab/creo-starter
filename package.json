@@ -39,6 +39,7 @@
         "motion-v": "^1.6.1",
         "reka-ui": "^2.4.0",
         "shadcn-vue": "^2.2.0",
+        "simplex-noise": "^4.0.3",
         "tailwindcss": "^4.1.1",
         "typescript": "^5.2.2",
         "vee-validate": "^4.15.1",
