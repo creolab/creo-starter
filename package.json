@@ -30,9 +30,11 @@
     "dependencies": {
         "@inertiajs/vue3": "^2.0.0",
         "@tailwindcss/vite": "^4.1.11",
+        "@types/canvas-confetti": "^1.9.0",
         "@vee-validate/zod": "^4.15.1",
         "@vitejs/plugin-vue": "^6.0.0",
         "@vueuse/core": "^12.8.2",
+        "canvas-confetti": "^1.9.3",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^2.0.0",
         "lucide-vue-next": "^0.468.0",

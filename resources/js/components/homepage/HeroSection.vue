@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { ConfettiButton } from '@/components/ui/confetti';
 import { FlipWords } from '@/components/ui/flip-words';
 import { ParticlesBg } from '@/components/ui/particles-bg';
 import { RainbowButton } from '@/components/ui/rainbow-button';
@@ -40,10 +41,10 @@ const isDark = computed(() => colorMode.value === 'dark');
 
                 <div class="mt-10 flex flex-col items-center justify-center gap-4 p-0 sm:flex-row">
                     <RainbowButton :speed="10" class="h-auto p-0">
-                        <a href="#" class="flex items-center rounded-xl bg-gray-800 px-8 py-2 text-sm text-white">
+                        <ConfettiButton href="#" class="flex items-center rounded-xl bg-gray-800 px-8 py-2 text-sm text-white">
                             Get Started
                             <ArrowRight class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </a>
+                        </ConfettiButton>
                     </RainbowButton>
                     <Button variant="outline" size="lg"> View Documentation </Button>
                 </div>
