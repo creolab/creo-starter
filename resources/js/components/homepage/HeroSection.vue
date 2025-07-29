@@ -7,7 +7,8 @@ import { ArrowRight, Sparkles } from 'lucide-vue-next';
 
 import { computed } from 'vue';
 
-const isDark = computed(() => useColorMode().value == 'dark');
+const colorMode = useColorMode();
+const isDark = computed(() => colorMode.value === 'dark');
 </script>
 
 <template>
