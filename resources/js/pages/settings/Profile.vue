@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
 
 import AvatarUpload from '@/components/AvatarUpload.vue';
 import DeleteUser from '@/components/DeleteUser.vue';
@@ -28,17 +29,18 @@ const breadcrumbItems: BreadcrumbItem[] = [
 ];
 
 const page = usePage();
-const user = page.props.auth.user as User;
+const user = computed(() => page.props.auth.user as User);
 
 const form = useForm({
-    first_name: user.first_name,
-    last_name: user.last_name,
-    email: user.email,
+    first_name: user.value.first_name,
+    last_name: user.value.last_name,
+    email: user.value.email,
 });
 
 const submit = () => {
     form.patch(route('profile.update'), {
         preserveScroll: true,
+        only: ['auth', 'flash', 'errors'],
     });
 };
 </script>
