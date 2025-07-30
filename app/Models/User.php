@@ -108,12 +108,17 @@ class User extends Authenticatable implements HasMedia
         return $this->getDefaultAvatarUrl();
     }
 
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
     /**
      * Get the default avatar URL (generated from initials).
      */
     public function getDefaultAvatarUrl(): string
     {
-        $initials = collect(explode(' ', $this->name))
+        $initials = collect(explode(' ', $this->full_name))
             ->map(fn($word) => strtoupper(substr($word, 0, 1)))
             ->take(2)
             ->join('');
